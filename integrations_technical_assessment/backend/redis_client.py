@@ -1,17 +1,23 @@
 import os
 import redis.asyncio as redis
-from kombu.utils.url import safequote
 
-redis_host = safequote(os.environ.get('REDIS_HOST', 'localhost'))
-redis_client = redis.Redis(host=redis_host, port=6379, db=0)
+# Get the Redis host from environment variables, default to 'localhost'
+redis_host = os.environ.get('REDIS_HOST', 'localhost')
+
+# Create an instance of the Redis client using the correct URL format
+redis_client = redis.from_url(f"redis://{redis_host}:6379/0")
 
 async def add_key_value_redis(key, value, expire=None):
-    await redis_client.set(key, value)
-    if expire:
-        await redis_client.expire(key, expire)
+    async with redis_client as client:
+        await client.set(key, value)
+        if expire:
+            await client.expire(key, expire)
 
 async def get_value_redis(key):
-    return await redis_client.get(key)
+    async with redis_client as client:
+        return await client.get(key)
 
 async def delete_key_redis(key):
-    await redis_client.delete(key)
+    async with redis_client as client:
+        await client.delete(key)
+

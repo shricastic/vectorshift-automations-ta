@@ -1,0 +1,5 @@
+// hubspot oauth2 docs
+https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-overview 
+
+//hubspot quick start py
+https://github.com/HubSpot/oauth-quickstart-python/blob/master/quickstart/quickstart.py
