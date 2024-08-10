@@ -1,19 +1,14 @@
 # hubspot.py
-
-from fastapi import Request
-from requests_oauthlib import OAuth2Session  
-import json
-from urllib.parse import parse_qsl
-import asyncio
-import aiofiles
-import base64
-from integrations.integration_item import IntegrationItem
-import secrets
-import urllib.parse
 from fastapi import Request, HTTPException
 from fastapi.responses import HTMLResponse
+import json
+import asyncio
 import logging
 import httpx
+import base64
+import secrets
+import urllib
+from integrations.integration_item import IntegrationItem
 
 from redis_client import add_key_value_redis, get_value_redis, delete_key_redis
 from dotenv import load_dotenv
