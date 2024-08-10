@@ -38,13 +38,7 @@ export const DataForm = ({ integrationType, credentials }) => {
     return (
         <Box display='flex' justifyContent='center' alignItems='center' flexDirection='column' width='100%'>
             <Box display='flex' flexDirection='column' width='100%'>
-                <TextField
-                    label="Loaded Data"
-                    value={loadedData || ''}
-                    sx={{mt: 2}}
-                    InputLabelProps={{ shrink: true }}
-                    disabled
-                />
+
                 <Button
                     onClick={handleLoad}
                     sx={{mt: 2}}
@@ -63,6 +57,17 @@ export const DataForm = ({ integrationType, credentials }) => {
           
             {loadedData && (
                 <Box mt={2} width='100%'>
+                    <TextField
+                      label="Loaded Data"
+                      value={JSON.stringify(loadedData, null, 2) || ''} // Formatting JSON when displaying
+                      sx={{ mt: 2, width: '100%'}} 
+                      InputLabelProps={{ shrink: true }}
+                      disabled
+                      multiline
+                      rows={3} 
+                      variant="outlined" 
+                    />
+
                     <TableContainer component={Paper}>
                         <Table>
                             <TableHead>
