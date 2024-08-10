@@ -96,7 +96,7 @@ async def oauth2callback_airtable(request: Request):
     <html>
         <script>
             window.close();
-        </script>
+</script>
     </html>
     """
     return HTMLResponse(content=close_window_script)
