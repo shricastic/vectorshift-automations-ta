@@ -3,6 +3,13 @@ import {
     Box,
     TextField,
     Button,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Paper,
 } from '@mui/material';
 import axios from 'axios';
 
@@ -53,6 +60,33 @@ export const DataForm = ({ integrationType, credentials }) => {
                     Clear Data
                 </Button>
             </Box>
+          
+            {loadedData && (
+                <Box mt={2} width='100%'>
+                    <TableContainer component={Paper}>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>ID</TableCell>
+                                    <TableCell>Type</TableCell>
+                                    <TableCell>Name</TableCell>
+                                    <TableCell>Visibility</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {loadedData.map((item) => (
+                                    <TableRow key={item.id}>
+                                        <TableCell>{item.id}</TableCell>
+                                        <TableCell>{item.type}</TableCell>
+                                        <TableCell>{item.name}</TableCell>
+                                        <TableCell>{item.visibility ? 'Visible' : 'Hidden'}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </Box>
+            )}        
         </Box>
     );
 }
