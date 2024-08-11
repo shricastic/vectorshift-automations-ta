@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import { AirtableIntegration } from './integrations/airtable';
 import { NotionIntegration } from './integrations/notion';
-import { HubspotIntegration } from './integrations/slack';
+import { HubspotIntegration } from './integrations/hubspot';
 import { DataForm } from './data-form';
 
 const integrationMapping = {

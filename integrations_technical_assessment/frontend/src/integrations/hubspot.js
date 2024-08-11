@@ -1,4 +1,4 @@
-// slack.js
+// hubspot.js
 
 // TODO
 
